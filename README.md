@@ -1,1 +1,16 @@
 # Runnerapp
+
+## Soveluksen toiminnot
+
+
+*Käyttäjä pystyy luomaan tunnukset ja kirjautumaan sovelukseen.
+*Käyttäjä pystyy lisämään ja poistamaan juoksu suorituksia ja niiden dataa sovellukseen.
+*käyttäjä voi lisätä karttoja juoksu suorituksista.
+*Käyttäjä voi etsiä muita käyttäjiä ja heidän juoksu suorituksia ja kommentoida niitä.
+*Sovelluksessa on tilasto sivut suorituksista ja käyttäjistä.
+*Käyttäjä voi hakea suorituksista tietoa eri parametreilla.
+*Käyttäjä pystyy arvoimaan omia ja muiden suorituksia.
+
+## Sovelluksen asennus
+
+N/A
