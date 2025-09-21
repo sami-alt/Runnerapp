@@ -13,4 +13,6 @@
 
 ## Sovelluksen asennus
 
-N/A
+flask run
+sqlite3 database.db < schema.sql
+
