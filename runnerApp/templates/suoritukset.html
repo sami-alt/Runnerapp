@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    {%for suoritus in suoritukset%}
+    <p>
+        nimi:{{suoritus[0]}}
+    </p>
+    <p>
+        matka:{{suoritus[1]}} metriä
+    </p>
+    <p>
+        aika:{{suoritus[2]}} minuuttia
+    </p>
+        {% if suoritus[3] %}
+            <p>Kommentit:{{suoritus[3]}}</p>
+        {% else %}
+            <p>Ei kommenteja</p>
+        {% endif %}
+    {% endfor %}
+    <a href="/">Etusivulle</a>
+</body>
+</html>
