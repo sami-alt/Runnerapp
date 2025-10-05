@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RunnerApp</title>
+</head>
+
+<body>
+  {% if session.user_id %}
+  <h1>Welcome RunnerApp aplication {{session.username}}</h1>
+  <a href="/runs">Runs on reccord</a>
+  <a href="/add">add run</a>
+  <a href="/search">Search runs by name</a>
+  <a href="/stats">See statistcs about app</a> 
+  <form action="/logout">
+    <input type="submit" value="logout">
+  </form>
+  {% else %}
+  <form action="/login" method="post">
+    <p>username</p>
+    <input type="text" name="username">
+    <p>password</p>
+    <input type="password" name="password">
+    <input type="submit" value="login"><br/>
+    <a href="/create_user">Ceate an user account</a>
+    </form>
+    {% endif %}
+</body>
+
+</html>

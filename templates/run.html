@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+            {% if run %}
+            <p>
+                nimi:{{run["name"]}}
+            </p>
+        <p>
+            matka:{{run["length"]}} metriä
+        </p>
+        <p>
+            aika:{{run["time"]}} minuuttia
+        </p>
+        {% if run[3] %}
+        <p>Owners comments:{{run["comment"]}}</p>
+        {% else %}
+        <p>no comments</p>
+        {% endif %}
+        {% if run["guest_comment"] %}
+            <p>Guest comment {{run["guest_comment"]}}</p>
+        {% endif%}
+        {% endif %}
+        {% if run["runner_id"] == session.user_id %}
+            <a href="/edit_run/{{run.run_id}}">Edit run</a>
+            <a href="/remove_run/{{run.run_id}}">Remove run</a>
+        {% else %}
+            <a href="/comment/{{run.run_id}}">Comment on the run</a>
+        {% endif%}
+        <a href="/">Home</a>
+    </body>
+</html>

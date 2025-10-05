@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <form action="/uusi" method="post">
-            <p>Suorituksen nimi</p>
+        <form action="/add_new" method="post">
+            <p>Location of the run</p>
             <input type="text" name="name"/>
-            <p>Suorituksen pituus</p>
+            <p>Length of the run (in meters)</p>
             <input type="text" name="length"/>
-            <p>Suorituksen aika</p>
+            <p>Time</p>
             <input type="text" name="time"/>
-            <p>Kommentit suorituksesta</p>
+            <p>Comments about run</p>
             <textarea name="comment"></textarea>
+            <input type="hidden" name="csrf_token" value="{{session.csrf_token}}">
             <input type="submit" value="lisää suoritus"/>
         </form>
     </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    {%for run in runs%}
+    
+    {% if run["runner_id"] == session.user_id %}
+        <p>Your run</p>
+    {% else %}
+        <p>TODO: add run creators name</p>
+    {% endif %}
+    
+    <p>
+        name:{{run["name"]}}
+    </p>
+    <p>
+        length:{{run["length"]}} meters
+    </p>
+    <p>
+        time:{{run["time"]}} minutes
+    </p>
+        {% if run["comment"] %}
+            <p>comments:{{run["comment"]}}</p>
+        {% else %}
+            <p>No comments</p>
+        {% endif %}
+        {% if run["guest_comment"] %}
+            <p>Guest comment {{run["guest_comment"]}}</p>
+        {% endif%}
+        {% if run["runner_id"] == session.user_id %}
+            <a href="/modify_run/{{run.run_id}}">Edit run</a>
+            <a href="/remove_run/{{run.run_id}}">Remove run</a>
+        {% else %}
+            <a href="/comment/{{run.run_id}}">Comment on the run</a>
+        {% endif%}
+    {% endfor %}
+    <br/>
+    <a href="/">to the frontpage</a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>change info what you want</p>
+        <form action="/modify_run/{{run.run_id}}" method="POST">
+            <p>Run name</p>
+            <input type="text" name="name" value="{{run.name}}">
+            <p>Run length</p>
+            <input type="text" name="length" value="{{run.length}}">
+            <p>Run time</p>
+            <input type="text" name="time" value="{{run.time}}">
+            <p>Run comment</p>
+            <input type="textarea" name="comment" value="{{run.comment}}">
+            <input type="submit" value="modify">
+        </form>
+    </body>
