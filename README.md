@@ -16,3 +16,6 @@
 flask run
 sqlite3 database.db < schema.sql
 
+Aplikaation testaukseen luo käyttäjä tunnukset 
+Lisää suorituksia ja voit hakea niitä haku toiminnolla tai katsoa kaikkia suorituksia kerralla
+Tilastoja löytyy statistics linkin alta ja ne päivittyvät käyttäjien ja juoksujen määrän mukaan
