@@ -1,30 +1,77 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
 
-<head>
-  <title>RunnerApp</title>
-</head>
+{% block content %}
 
-<body>
-  {% if session.user_id %}
-  <h1>Welcome RunnerApp aplication {{session.username}}</h1>
-  <a href="/runs">Runs on reccord</a>
-  <a href="/add">add run</a>
-  <a href="/search">Search runs by name</a>
-  <a href="/stats">See statistcs about app</a> 
-  <form action="/logout">
-    <input type="submit" value="logout">
-  </form>
-  {% else %}
-  <form action="/login" method="post">
-    <p>username</p>
-    <input type="text" name="username">
-    <p>password</p>
-    <input type="password" name="password">
-    <input type="submit" value="login"><br/>
-    <a href="/create_user">Ceate an user account</a>
-    </form>
-    {% endif %}
-</body>
+{% if session.user_id %}
+    <h3>Hello, {{session.username}}</h3>
+    <section class="Page">
+        <div class="dataBox">
+            <h2>My lates runs</h2>
+            {% for run in my_runs %}
+            <p>
+                Location:{{run["name"]}}
+            </p>
+            <p>
+                Length:{{run["length"]}} meters
+            </p>
+            <p>
+                Time:{{run["time"]}} minutes
+            </p>
+            <a href="/run/{{run.run_id}}">Look at run</a>
+            {% endfor %}
+        </div>
+        <div class="dataBox">
 
-</html>
+            <h2>Personal statistics</h2>
+            {% if my_stats %}
+            <p>Runs ran in app {{my_stats["runs"]}}</p>
+            <p>Meters run all together {{my_stats["all_meters"]}}</p>
+            <p>Longest run in record {{my_stats["longest_run"]}}</p>
+            <p>Time spent running for all runners {{my_stats["all_minutes"]}}</p>
+            <p>Longest time spent running for one runner {{my_stats["longest_minutes"]}}</p>
+            {% else %}
+            <p>No data available</p>
+            {%endif%}
+        </div>
+        <div class="dataBox">
+
+            <h2>Profile picture</h2>
+            {% if profile_picture %}
+            <img src="/image_profile/{{user.id}}" width="250" height="400" /><br>
+            {% endif %}
+            <a href="/add_profile_pic">Update or add profile picture</a>
+            {% endif %}
+        </div>
+        <div class="dataBox">
+
+            <h2>Ten latest runs</h2>
+            {% for run in all_runs %}
+            <p>
+                nimi:{{run["name"]}}
+            </p>
+            <p>
+                matka:{{run["length"]}} metriä
+            </p>
+            <p>
+                aika:{{run["time"]}} minuuttia
+            </p>
+            <a href="/run/{{run.run_id}}">Look at run</a>
+            {% endfor %}
+        </div>
+        <div class="dataBox">
+
+            <h2>Overall statistcs from app</h2>
+            {% if stats_all %}
+                <p>Runners in app {{stats_all["users"]}}</p>
+                <p>Runs ran in app {{stats_all["runs"]}}</p>
+                <p>Meters run all together {{stats_all["all_meters"]}}</p>
+                <p>Longest run in record {{stats_all["longest_run"]}}</p>
+                <p>Time spent running for all runners {{stats_all["all_minutes"]}}</p>
+                <p>Longest time spent running for one runner {{stats_all["longest_minutes"]}}</p>
+            {% else %}
+                <p>No data available</p>
+            {%endif%}
+        </div>
+    </section>
+    {% endblock %}

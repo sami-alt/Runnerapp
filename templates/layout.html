@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+    <body class="content">
+        <header>
+            <h1>RunnerApp application</h1>
+        </header>
+        <nav class="navbar">
+            <a href="/">To home</a>
+            <a href="/runs">Runs on reccord</a>
+            <a href="/search">Search runs by name</a>
+            {% if session.user_id %}
+            <a href="/add">add run</a>
+            <form action="/logout">
+                <input type="submit" value="logout">
+            </form>
+            {% else %}
+            <a href="/login_page">Login or create user</a>
+            {% endif %}
+        </nav>
+        <section class="Page">
+            {% block content %}{% endblock %}
+        </section>
+    </body>
+</html>

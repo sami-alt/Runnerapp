@@ -1,8 +1,54 @@
-<!DOCTYPE html>
-<html>
-    <p>Hae suoritusta nimellä</p>
-    <form action="/search_one" method="get">
-        <input type="text" name="name">
-        <input type="submit" value="hae"></input>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+<div class="dataBox">
+
+    <h3>Search run by parameters</h3>
+    <p>Search run by location name or owner comment content</p>
+    <form action="/search_runs" method="get">
+        <input type="text" name="description">
+        <input type="submit" value="Search"></input>
     </form>
-</html>
+
+    <form action="/search_runs" method="get">
+        <p>Race or training/casual run</p>
+        <input type="radio" name="situation" id="race" value="race">
+        <label for="race">Race</label><br>
+        <input type="radio" name="situation" id="training" value="training"> 
+        <label for="training">Training/casual run</label><br>
+        <input type="submit" value="Search"></input>
+    </form>
+    
+    <form action="/search_runs" method="get">
+        <p>Running method</p>
+        
+        <input type="checkbox" id="jogging" name="method" value="1">
+        <label for="jogging">Jogging</label><br>
+        
+        <input type="checkbox" id="running" name="method" value="2">
+        <label for="running">Running</label><br>
+        
+        <input type="checkbox" id="interval" name="method" value="3">
+        <label for="interval">Interval</label><br>
+        
+        <input type="checkbox" id="longrun" name="method" value="4">
+        <label for="longrun">Long run</label><br>
+        
+        <input type="checkbox" id="recovery" name="method" value="5">
+        <label for="recovery">Recovery run</label><br>
+        
+        <input type="checkbox" id="hill" name="method" value="6">
+        <label for="hill">Hill training</label><br>
+        
+        <input type="checkbox" id="tempo" name="method" value="7">
+        <label for="tempo">Tempo run</label><br>
+        <input type="submit" value="Search"></input>
+    </form>
+</div>
+        
+    <p>
+{% endblock %}

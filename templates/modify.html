@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <p>change info what you want</p>
-        <form action="/modify_run/{{run.run_id}}" method="POST">
-            <p>Run name</p>
-            <input type="text" name="name" value="{{run.name}}">
-            <p>Run length</p>
-            <input type="text" name="length" value="{{run.length}}">
-            <p>Run time</p>
-            <input type="text" name="time" value="{{run.time}}">
-            <p>Run comment</p>
-            <input type="textarea" name="comment" value="{{run.comment}}">
-            <input type="submit" value="modify">
-        </form>
-    </body>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+<div class="dataBox">
+
+    <p>change info what you want</p>
+    <form action="/modify_run/{{run.run_id}}" method="POST" enctype="multipart/form-data">
+        <p>Run name</p>
+        <input type="text" name="name" value="{{run.name}}">
+        <p>Run length</p>
+        <input type="text" name="length" value="{{run.length}}">
+        <p>Run time</p>
+        <input type="text" name="time" value="{{run.time}}">
+        <p>Run comment</p>
+        <input type="textarea" name="comment" value="{{run.comment}}">
+        <p>
+            Map: <input type="file" name="image" accept=".png"> 
+        </p>
+        <input type="hidden" name="csrf_token" value="{{session.csrf_token}}">
+        <input type="submit" value="modify">
+    </form>
+</div>
+{% endblock %}

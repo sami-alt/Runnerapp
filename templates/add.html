@@ -1,17 +1,54 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <form action="/add_new" method="post">
-            <p>Location of the run</p>
-            <input type="text" name="name"/>
-            <p>Length of the run (in meters)</p>
-            <input type="text" name="length"/>
-            <p>Time</p>
-            <input type="text" name="time"/>
-            <p>Comments about run</p>
-            <textarea name="comment"></textarea>
-            <input type="hidden" name="csrf_token" value="{{session.csrf_token}}">
-            <input type="submit" value="lisää suoritus"/>
-        </form>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="dataBox">
+
+    <form action="/add_new" method="post" enctype="multipart/form-data">
+        <p>Location of the run</p>
+        <input type="text" name="name"/>
+        <p>Length of the run (in meters)</p>
+        <input type="text" name="length"/>
+        <p>Time</p>
+        <input type="text" name="time"/>
+        <p>Comments about run</p>
+        <textarea name="comment"></textarea>
+        <p>Race or training/casual run</p>
+        <input type="radio" name="situation" id="race" value="race">
+        <label for="race">Race</label><br>
+        <input type="radio" name="situation" id="training" value="training"> 
+        <label for="training">Training/casual run</label><br>
+        <p>Running method</p>
+        
+        <input type="checkbox" id="jogging" name="method" value="1">
+        <label for="jogging">Jogging</label><br>
+        
+        <input type="checkbox" id="running" name="method" value="2">
+        <label for="running">Running</label><br>
+        
+        <input type="checkbox" id="interval" name="method" value="3">
+        <label for="interval">Interval</label><br>
+        
+        <input type="checkbox" id="longrun" name="method" value="4">
+        <label for="longrun">Long run</label><br>
+        
+        <input type="checkbox" id="recovery" name="method" value="5">
+        <label for="recovery">Recovery run</label><br>
+        
+        <input type="checkbox" id="hill" name="method" value="6">
+        <label for="hill">Hill training</label><br>
+        
+        <input type="checkbox" id="tempo" name="method" value="7">
+        <label for="tempo">Tempo run</label><br>
+        
+        <p>
+            Map: <input type="file" name="image" accept=".png"> 
+        </p>
+        <br>
+        <input type="hidden" name="csrf_token" value="{{session.csrf_token}}">
+        <input type="submit" value="add_run"/><br>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <body>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+    <div class="dataBox">
         <p>Are you sure you want to remove run from reccords</p>
         <form action="/remove_run/{{run_id}}" method="POST">
             <input type="submit" value="Confirm">
         </form>
-    </body>
-</html>
+    </div>
+{% endblock %}
